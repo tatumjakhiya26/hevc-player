@@ -1,0 +1,13 @@
+# build output
+bin/
+obj/
+build/
+buildui/
+
+# bundled engine (download per BUILD.md, not committed)
+src/embed/
+
+# release artifacts (go to GitHub Releases, not the repo)
+HevcPlayer.zip
+
+*.user
