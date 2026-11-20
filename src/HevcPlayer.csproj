@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AssemblyName>HevcPlayer</AssemblyName>
+    <RootNamespace>HevcPlayer</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Product>HevcPlayer</Product>
+    <AssemblyTitle>HevcPlayer</AssemblyTitle>
+    <Company>HevcPlayer</Company>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+
+    <!-- single portable exe -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- libmpv (LGPL) carried inside the exe, extracted to %LOCALAPPDATA% on first run.
+         Pass -p:NoEmbed=true for a fast UI-only build. -->
+    <EmbeddedResource Include="embed\libmpv-2.dll" Condition="'$(NoEmbed)' != 'true'">
+      <LogicalName>libmpv-2.dll</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
